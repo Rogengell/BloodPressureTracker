@@ -2,7 +2,7 @@ services:
   structurizr:
     image: structurizr/lite
     ports:
-      - "8080:8080"
+      - "8086:8080"
     volumes:
       - ./docs:/usr/local/structurizr
 
@@ -51,17 +51,26 @@ services:
         condition: service_started
 
   jenkins_service:
-    build: 
-      context: .
-      dockerfile: DockerFile.Jenkins
+    image: my-jenkins-with-docker  # The custom Jenkins image
+    container_name: jenkins
     ports:
-      - 8083:8080
+      - 8080:8080
       - 50000:50000
     volumes:
-      - jenkins_service:/var/jenkins_home
+      - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    restart: always
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network:
+    driver: bridge
 
 volumes:
   bloodpressure:
   featurehub-h2-data:
-  jenkins_service:
+  jenkins_home:
+    driver: local

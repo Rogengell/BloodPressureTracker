@@ -3,8 +3,8 @@ pipeline{
     triggers{
         pollSCM('* * * * *')
     }
-    environment{
-        COMPOSE_FILE = 'docker-compose.yml' 
+    environment {
+        DOCKER_COMPOSE = '/usr/local/bin/docker-compose'  // Path to docker-compose binary
     }
     stages{
         stage('Checkout'){

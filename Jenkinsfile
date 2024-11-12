@@ -16,7 +16,7 @@ pipeline{
             steps{
                 echo 'Building the application'
                 sh 'docker --version'
-                sh 'docker-compose -d --build'
+                sh 'docker-compose build'
             }
         }
         stage('prepare test'){

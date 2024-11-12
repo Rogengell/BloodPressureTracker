@@ -51,7 +51,9 @@ services:
         condition: service_started
 
   jenkins_service:
-    image: jenkins/jenkins:latest
+    build: 
+      context: .
+      dockerfile: DockerFile.Jenkins
     ports:
       - 8083:8080
       - 50000:50000

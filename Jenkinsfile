@@ -3,12 +3,20 @@ pipeline{
     triggers{
         pollSCM('* * * * *')
     }
+    environment{
+        COMPOSE_FILE = 'docker-compose.yml' 
+    }
     stages{
+        stage('Checkout'){
+            steps{
+                checkout scm
+            }
+        }
         stage('Build'){
             steps{
                 echo 'Building the application'
                 sh 'docker --version'
-                sh 'docker-compose build'
+                sh 'docker-compose -d --build'
             }
         }
         stage('prepare test'){

@@ -26,7 +26,7 @@ services:
 
   patient:
     build:
-      context: .
+      context: ./patient
       dockerfile: patient/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

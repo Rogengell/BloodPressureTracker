@@ -26,8 +26,8 @@ services:
 
   patient:
     build:
-      context: /var/jenkins_home/workspace/BloodPressurePip/Patient
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: patient/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

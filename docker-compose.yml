@@ -27,7 +27,7 @@ services:
   patient:
     build:
       context: .
-      dockerfile: patient/Dockerfile
+      dockerfile: Patient/Dockerfile
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

@@ -20,7 +20,7 @@ namespace Mesurment.Controller
         public MesurmentController(IMesurmentService mesurmentService, FeatureService featureService)
         {
             _mesurmentService = mesurmentService;
-            _measurementFlag = featureService.IsFeatureEnabled(Features.MeasurementService);
+            _measurementFlag = featureService.FeatureFlagChecker(Features.MeasurementService);
         }
 
         [HttpGet("GetAllUserMeasurements/{ssn}")]

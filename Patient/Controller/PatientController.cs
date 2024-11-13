@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using Patient.Request_Responce;
 using Patient.Service;
+using FeatureHub;
 
 namespace Patient.Controller
 {
@@ -19,7 +20,7 @@ namespace Patient.Controller
         public PatientController(IPatientService patientService, FeatureService featureService)
         {
             _patientService = patientService;
-            _patientFlag = featureService.IsFeatureEnabled(Features.PatientService);
+            _patientFlag = featureService.FeatureFlagChecker(Features.PatientService);
         }
 
         [HttpGet("Login/{ssn}")]

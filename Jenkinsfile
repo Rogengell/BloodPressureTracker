@@ -35,5 +35,10 @@ pipeline{
                 echo 'Deploying the application'
             }
         }
+        stage('Clean'){
+            steps{
+                sh 'docker-compose down'
+            }
+        }
     }
 }

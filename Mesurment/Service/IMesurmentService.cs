@@ -16,8 +16,6 @@ namespace Mesurment.Service
         Task<GeneralResponce> updateMeasurements(Measurements measurement);
 
 
-
-
         Task<GeneralResponce> CreateRandomMeasurements(Measurements measurements);
     }
 }

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mesurment", "Mesurment\Mesu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFramework", "EFramework\EFramework.csproj", "{C3FFCDB6-ED77-46DA-8F04-5BCD59E9CDAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureHub", "FeatureHub\FeatureHub.csproj", "{64846B5C-B26B-48F4-AC19-D3D02DE3D70B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,5 +28,9 @@ Global
 		{DFA8E3BC-F25F-484F-B38F-113AB5A2D041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA8E3BC-F25F-484F-B38F-113AB5A2D041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA8E3BC-F25F-484F-B38F-113AB5A2D041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64846B5C-B26B-48F4-AC19-D3D02DE3D70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64846B5C-B26B-48F4-AC19-D3D02DE3D70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64846B5C-B26B-48F4-AC19-D3D02DE3D70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64846B5C-B26B-48F4-AC19-D3D02DE3D70B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

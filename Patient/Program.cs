@@ -16,6 +16,12 @@ builder.Services.AddDbContext<BPDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 );
 
+builder.Services.AddSingleton<FeatureHub>(provider => 
+    var featureHub = new FeatureService();
+    featureHub.Connect();
+    return featureHub;
+);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

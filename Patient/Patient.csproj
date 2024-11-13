@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <ProjectReference Include="..\EFramework\EFramework.csproj" />
+    <ProjectReference Include="..\FeatureHub\FeatureHub.csproj" />
   </ItemGroup>
 
 </Project>

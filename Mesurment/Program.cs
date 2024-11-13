@@ -2,6 +2,7 @@ using EFramework;
 using EFramework.Data;
 using Microsoft.EntityFrameworkCore;
 using Mesurment.Service;
+using FeatureHub;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,12 @@ builder.Services.AddScoped<IMesurmentService, MesurmentService>();
 
 builder.Services.AddDbContext<BPDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
+);
+
+builder.Services.AddSingleton<FeatureHub>(provider => 
+    var featureHub = new FeatureService();
+    featureHub.Connect();
+    return featureHub;
 );
 
 var app = builder.Build();

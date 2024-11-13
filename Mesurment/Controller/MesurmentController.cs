@@ -6,6 +6,7 @@ using Mesurment.Request_Responce;
 using Mesurment.Service;
 using Microsoft.AspNetCore.Mvc;
 using Model;
+using FeatureHub;
 
 namespace Mesurment.Controller
 {
@@ -14,10 +15,12 @@ namespace Mesurment.Controller
     public class MesurmentController : ControllerBase
     {
         private readonly IMesurmentService _mesurmentService;
+        private bool  _measurementFlag;
 
-        public MesurmentController(IMesurmentService mesurmentService)
+        public MesurmentController(IMesurmentService mesurmentService, FeatureService featureService)
         {
             _mesurmentService = mesurmentService;
+            _measurementFlag = featureService.IsFeatureEnabled(Features.MeasurementService);
         }
 
         [HttpGet("GetAllUserMeasurements/{ssn}")]
@@ -28,6 +31,10 @@ namespace Mesurment.Controller
                 throw new ArgumentNullException(nameof(ssn));
             }
 
+            if (!_measurementFlag)
+            {
+                throw new Exception("Measurement Service is disabled");
+            }
             try
             {
                 var result = await _mesurmentService.GetAllUserMeasurements(ssn);
@@ -43,6 +50,11 @@ namespace Mesurment.Controller
         [HttpPut("CreateMeasurements")]
         public async Task<GeneralResponce> CreateMeasurements([FromBody]Measurements measurement) 
         {
+            if (!_measurementFlag)
+            {
+                throw new Exception("Measurement Service is disabled");
+            }
+
             try
             {
                 var result = await _mesurmentService.CreateMeasurements(measurement);
@@ -62,6 +74,12 @@ namespace Mesurment.Controller
             {
                 throw new ArgumentNullException(nameof(id));
             }
+
+            if (!_measurementFlag)
+            {
+                throw new Exception("Measurement Service is disabled");
+            }
+
             try
             {
                 var result = await _mesurmentService.DeleteMeasurements(id);
@@ -77,6 +95,11 @@ namespace Mesurment.Controller
         [HttpPost("UpdateMeasurements/{id}")]
         public async Task<GeneralResponce> updateMeasurements([FromBody]Measurements measurement)
         {
+            if (!_measurementFlag)
+            {
+                throw new Exception("Measurement Service is disabled");
+            }
+
             try
             {
                 var result = await _mesurmentService.updateMeasurements(measurement);
@@ -92,6 +115,11 @@ namespace Mesurment.Controller
         [HttpPut("CreateRandomMeasurements/{ssn}")]
         public async Task<GeneralResponce> CreateRandomMeasurements(string ssn)
         {
+            if (!_measurementFlag)
+            {
+                throw new Exception("Measurement Service is disabled");
+            }
+
             try
             {
                 var Mesurment = new Measurements();

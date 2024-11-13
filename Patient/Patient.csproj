@@ -12,5 +12,5 @@
     <ProjectReference Include="..\EFramework\EFramework.csproj" />
     <ProjectReference Include="..\FeatureHub\FeatureHub.csproj" />
   </ItemGroup>
-
+  
 </Project>

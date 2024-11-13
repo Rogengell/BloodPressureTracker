@@ -14,10 +14,12 @@ namespace Patient.Controller
     public class PatientController : ControllerBase
     {
         private readonly IPatientService _patientService;
+        private bool _patientFlag;
 
-        public PatientController(IPatientService patientService)
+        public PatientController(IPatientService patientService, FeatureService featureService)
         {
             _patientService = patientService;
+            _patientFlag = featureService.IsFeatureEnabled(Features.PatientService);
         }
 
         [HttpGet("Login/{ssn}")]
@@ -27,6 +29,12 @@ namespace Patient.Controller
             {
                 return new PatientPayload(new GeneralResponce(404, "No User Found"));
             }
+
+            if (!_patientFlag)
+            {
+                throw new Exception("Patient Service is disabled");
+            }
+        
             try
             { 
                 return await _patientService.Login(ssn);
@@ -41,6 +49,11 @@ namespace Patient.Controller
         [HttpPost("Register")]
         public async Task<GeneralResponce> Register([FromBody]Patients patients)
         {
+            if (!_patientFlag)
+            {
+                throw new Exception("Patient Service is disabled");
+            }
+
             try
             {
                 return await _patientService.Register(patients);

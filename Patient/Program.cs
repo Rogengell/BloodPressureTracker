@@ -1,6 +1,7 @@
 using EFramework.Data;
 using Microsoft.EntityFrameworkCore;
 using Patient.Service;
+using FeatureHub;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,11 +17,11 @@ builder.Services.AddDbContext<BPDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddSingleton<FeatureHub>(provider => 
+builder.Services.AddSingleton<FeatureService>(provider => { 
     var featureHub = new FeatureService();
     featureHub.Connect();
     return featureHub;
-);
+});
 
 var app = builder.Build();
 

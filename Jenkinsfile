@@ -3,6 +3,9 @@ pipeline{
     triggers{
         pollSCM('* * * * *')
     }
+    tools{
+        dotnet 'My-SDK-DotNet'
+    }
     stages{
         stage('Checkout'){
             steps{

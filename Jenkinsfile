@@ -26,7 +26,6 @@ pipeline{
                 // sh 'docker-compose up -d migration_service'
                 sh 'dotnet build Mesurment'
                 sh 'dotnet build Patient'
-                sh 'dotnet build Bloodpressure'
                 sh 'dotnet build Featurehub'
             }
         }

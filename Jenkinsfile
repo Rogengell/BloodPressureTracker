@@ -18,6 +18,7 @@ pipeline{
         }
         stage('prepare test'){
             steps{
+                echo 'prepare test'
                 // sh 'docker-compose up -d bloodpressure'
                 // sh 'docker-compose up -d patient'
                 // sh 'docker-compose up -d mesurment'

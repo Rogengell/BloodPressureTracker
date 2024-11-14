@@ -33,7 +33,7 @@ public class PatientTest
 
         var patientController = new PatientController(mock.Object, featureServiceMock.Object);
         // Act    
-        var result = await mock.Object.Login("123456789");
+        var result = await patientController.Login("123456789");
 
         // Assert
         _testOutputHelper.WriteLine(result.generalResponce._status.ToString());
@@ -58,7 +58,7 @@ public class PatientTest
 
         var patientController = new PatientController(mock.Object, featureServiceMock.Object);
         // Act    
-        var result = await mock.Object.Login("123456789");
+        var result = await patientController.Login("123456789");
 
         // Assert
         _testOutputHelper.WriteLine(result.generalResponce._status.ToString());
@@ -84,7 +84,7 @@ public class PatientTest
         var patientController = new PatientController(mock.Object, featureServiceMock.Object);
 
         //Act
-        var result = await mock.Object.Register(new Patients());
+        var result = await patientController.Register(new Patients());
 
         //Assert
         _testOutputHelper.WriteLine(result._status.ToString());
@@ -110,7 +110,7 @@ public class PatientTest
         var patientController = new PatientController(mock.Object, featureServiceMock.Object);
 
         //Act
-        var result = await mock.Object.Register(new Patients());
+        var result = await patientController.Register(new Patients());
 
         //Assert
         _testOutputHelper.WriteLine(result._status.ToString());
@@ -118,4 +118,8 @@ public class PatientTest
         Assert.Equal(200, result._status);
         Assert.Equal("Success", result._message);
     }
+
+    //TODO: Add user not found tests
+
+    //TODO: Add featureHub tests
 }

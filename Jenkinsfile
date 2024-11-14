@@ -4,7 +4,7 @@ pipeline{
         pollSCM('* * * * *')
     }
     tools{
-        dotnet 'My-SDK-DotNet'
+        dotnetsdk 'My-SDK-DotNet'
     }
     stages{
         stage('Checkout'){

@@ -37,10 +37,11 @@ pipeline{
                 echo 'Deploying the application'
             }
         }
-        stage('Clean'){
-            steps{
-                sh 'docker-compose down'
-            }
+    }
+    post {
+        always {
+            echo 'Cleaning up resources...'
+            sh 'docker-compose down'
         }
     }
 }

@@ -3,9 +3,6 @@ pipeline{
     triggers{
         pollSCM('* * * * *')
     }
-    tools{
-        dotnetsdk 'My-SDK-DotNet'
-    }
     stages{
         stage('Checkout'){
             steps{
@@ -32,7 +29,7 @@ pipeline{
         stage('Test'){
             steps{
                 echo 'Testing the application'
-                sh'dotnetTest'
+                dotnetTest configuration: 'Release', project: 'Mesurment.Tests', sdk: 'My-SDK-DotNet'
             }
         }
         stage('Deploy'){

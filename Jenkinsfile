@@ -29,7 +29,7 @@ pipeline{
         stage('Test'){
             steps{
                 echo 'Testing the application'
-                dotnetTest configuration: 'Release', project: 'Mesurment.Tests', sdk: 'My-SDK-DotNet'
+                sh 'dotnet test'
             }
         }
         stage('Deploy'){

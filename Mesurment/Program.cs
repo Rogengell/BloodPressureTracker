@@ -18,9 +18,9 @@ builder.Services.AddDbContext<BPDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddSingleton<FeatureService>(provider => { 
+builder.Services.AddSingleton<FeatureService>(provider =>
+{
     var featureHub = new FeatureService();
-    featureHub.Connect();
     return featureHub;
 });
 

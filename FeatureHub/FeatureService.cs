@@ -19,7 +19,7 @@ public class FeatureService
         FeatureLogging.ErrorLogger += (sender, s) => Console.WriteLine("ERROR: " + s);
     }
 
-    public async Task Connect()
+    private async Task Connect()
     {
         var config = new EdgeFeatureHubConfig("http://featurehub:8085", "58cc5eef-6bd0-438d-980d-fefb04043681/3s3TJTdF0RORXds6nWcL957z6JYaWBgQn6780UNs");
         var fh = await config.NewContext().Country(StrategyAttributeCountryName.Denmark).Build();
@@ -30,6 +30,7 @@ public class FeatureService
 
     public virtual bool FeatureFlagChecker(Features feature)
     {
+        Connect().Wait();
         Console.WriteLine("FeatureFlagChecker");
         Console.WriteLine(_isFeatureDkEnabled);
         Console.WriteLine(_isFeatureMeasurementEnabled);

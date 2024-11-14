@@ -12,8 +12,8 @@ pipeline{
         stage('Build'){
             steps{
                 echo 'Building the application'
-                // sh 'docker --version'
-                // sh 'docker-compose build'
+                sh 'docker --version'
+                sh 'docker-compose build'
             }
         }
         stage('prepare test'){
@@ -24,6 +24,10 @@ pipeline{
                 // sh 'docker-compose up -d mesurment'
                 // sh 'docker-compose up -d featurehub'
                 // sh 'docker-compose up -d migration_service'
+                sh 'dotnet build mesurment'
+                sh 'dotnet build patient'
+                sh 'dotnet build bloodpressure'
+                sh 'dotnet build featurehub'
             }
         }
         stage('Test'){

@@ -21,14 +21,14 @@ public class FeatureService
 
     public async Task Connect()
     {
-        var config = new EdgeFeatureHubConfig("http://featurehub:8085", "bec86929-e78a-4625-8e08-a3cf486c7c1b/NhnA3JPAPZsNWef7PAv9DK7An8x3UZjSA0bISJgb");
+        var config = new EdgeFeatureHubConfig("http://featurehub:8085", "58cc5eef-6bd0-438d-980d-fefb04043681/3s3TJTdF0RORXds6nWcL957z6JYaWBgQn6780UNs");
         var fh = await config.NewContext().Country(StrategyAttributeCountryName.Denmark).Build();
         _isFeatureMeasurementEnabled = fh["m_service"].IsEnabled;
         _isFeaturePatientEnabled = fh["p_service"].IsEnabled;
         _isFeatureDkEnabled = fh["o_dk"].IsEnabled;
     }
 
-    public bool FeatureFlagChecker(Features feature)
+    public virtual bool FeatureFlagChecker(Features feature)
     {
         Console.WriteLine("FeatureFlagChecker");
         Console.WriteLine(_isFeatureDkEnabled);

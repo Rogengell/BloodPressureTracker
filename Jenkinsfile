@@ -12,8 +12,8 @@ pipeline{
         stage('Build'){
             steps{
                 echo 'Building the application'
-                // sh 'docker --version'
-                // sh 'docker-compose build'
+                sh 'docker --version'
+                sh 'docker-compose build'
             }
         }
         stage('prepare test'){
@@ -24,12 +24,15 @@ pipeline{
                 // sh 'docker-compose up -d mesurment'
                 // sh 'docker-compose up -d featurehub'
                 // sh 'docker-compose up -d migration_service'
+                sh 'dotnet build Mesurment'
+                sh 'dotnet build Patient'
+                sh 'dotnet build FeatureHub'
             }
         }
         stage('Test'){
             steps{
                 echo 'Testing the application'
-                sh'dotnet test'
+                sh 'dotnet test'
             }
         }
         stage('Deploy'){
@@ -37,10 +40,11 @@ pipeline{
                 echo 'Deploying the application'
             }
         }
-        stage('Clean'){
-            steps{
-                sh 'docker-compose down'
-            }
+    }
+    post {
+        always {
+            echo 'Cleaning up resources...'
+            sh 'docker-compose down'
         }
     }
 }

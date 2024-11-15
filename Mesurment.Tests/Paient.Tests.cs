@@ -119,7 +119,30 @@ public class PatientTest
         Assert.Equal("Success", result._message);
     }
 
-    //TODO: Add user not found tests
+    [Fact]
+    public async void NotFoundLoginTest()
+    {
+        // Arrange
+        var mock = new Mock<IPatientService>();
+
+        var GeneralResponce = new GeneralResponce(404, "No User Found");
+
+        mock.Setup(client => client.Login(It.IsAny<string>())).ReturnsAsync(new PatientPayload(GeneralResponce, new Patients()));
+
+        var featureServiceMock = new Mock<FeatureService>();
+
+        featureServiceMock.Setup(client => client.FeatureFlagChecker(It.IsAny<Features>())).Returns(true);
+
+        var patientController = new PatientController(mock.Object, featureServiceMock.Object);
+        // Act    
+        var result = await patientController.Login("");
+
+        // Assert
+        _testOutputHelper.WriteLine(result.generalResponce._status.ToString());
+        _testOutputHelper.WriteLine(result.generalResponce._message);
+        Assert.Equal(404, result.generalResponce._status);
+        Assert.Equal("No User Found", result.generalResponce._message);
+    }
 
     //TODO: Add featureHub tests
 }

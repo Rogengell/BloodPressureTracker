@@ -17,14 +17,16 @@ docker compose up
 ## short explanation of featureHub values
 
 > [!NOTE]
-> her we checking for the measurement service
-> isFeatureMeasurementEnabled = fh["m_service"].IsEnabled
+> her we checking for the measurement service:
 >
-> and her we check for the patient service
-> isFeaturePatientEnabled = fh["p_service"].IsEnabled
+> \_isFeatureMeasurementEnabled = fh["m_service"].IsEnabled
+>
+> and her we check for the patient service:
+>
+> \_isFeaturePatientEnabled = fh["p_service"].IsEnabled
+>
+> the last one checks if the location lock is active:
+>
+> \_isFeatureDkEnabled = fh["o_dk"].IsEnabled
 
-> the last one checks if the location lock is active
-> isFeatureDkEnabled = fh["o_dk"].IsEnabled
-
-> [!IMPORTANT]
-> **in the FeatureHub project in featureService at line 24 you have to put your API key**
+> [!IMPORTANT] > **in the FeatureHub project in featureService at line 24 you have to put your API key**

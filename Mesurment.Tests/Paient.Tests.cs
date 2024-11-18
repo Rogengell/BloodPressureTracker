@@ -143,6 +143,4 @@ public class PatientTest
         Assert.Equal(404, result.generalResponce._status);
         Assert.Equal("No User Found", result.generalResponce._message);
     }
-
-    //TODO: Add featureHub tests
 }

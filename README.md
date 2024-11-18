@@ -29,4 +29,5 @@ docker compose up
 >
 > \_isFeatureDkEnabled = fh["o_dk"].IsEnabled
 
-> [!IMPORTANT] > **in the FeatureHub project in featureService at line 24 you have to put your API key**
+> [!IMPORTANT]
+> **in the FeatureHub project in featureService at line 24 you have to put your API key**

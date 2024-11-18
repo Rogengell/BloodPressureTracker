@@ -1,12 +1,28 @@
+## Start our project :rocket:
 
+short explanation on how to run our project inside docker
+
+the first step is to create our Jenkins image from our self made dockerfile
+
+```
 docker build -f DockerFile.Jenkins -t my-jenkins-with-docker .
+```
 
+than you con run docker
 
-        _isFeatureMeasurementEnabled = fh["m_service"].IsEnabled;
-        _isFeaturePatientEnabled = fh["p_service"].IsEnabled;
-        _isFeatureDkEnabled = fh["o_dk"].IsEnabled;
+```
+docker compose up
+```
 
-EdgeFeatureHubConfig skal ædnre api key
+## short explanation of featureHub values
 
+her we checking for the measurement service
+\_isFeatureMeasurementEnabled = fh["m_service"].IsEnabled;
 
-compose up
+and her we check for the patient service
+\_isFeaturePatientEnabled = fh["p_service"].IsEnabled;
+
+the last one checks if the location lock is active
+\_isFeatureDkEnabled = fh["o_dk"].IsEnabled;
+
+**in the FeatureHub project in featureService at line 24 you have to put your API key**

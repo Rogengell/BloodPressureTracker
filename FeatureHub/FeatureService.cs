@@ -21,7 +21,7 @@ public class FeatureService
 
     private async Task Connect()
     {
-        var config = new EdgeFeatureHubConfig("http://featurehub:8085", "58cc5eef-6bd0-438d-980d-fefb04043681/3s3TJTdF0RORXds6nWcL957z6JYaWBgQn6780UNs");
+        var config = new EdgeFeatureHubConfig("http://featurehub:8085", "<paste your API key here>");
         var fh = await config.NewContext().Country(StrategyAttributeCountryName.Denmark).Build();
         _isFeatureMeasurementEnabled = fh["m_service"].IsEnabled;
         _isFeaturePatientEnabled = fh["p_service"].IsEnabled;
